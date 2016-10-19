@@ -23,7 +23,7 @@ public class HtmlDocumentImpl implements HtmlDocument {
     public static HtmlDocument createHtmlDocument(String url) {
         try {
             return new HtmlDocumentImpl(url);
-        } catch (IOException e) {
+        } catch (IOException | IllegalArgumentException e) {
             return new EmptyHtmlDocumentImpl();
         }
     }
