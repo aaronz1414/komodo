@@ -15,7 +15,7 @@ public class EmailCrawler {
 
     public static void main(String[] args) {
         domain = args[0];
-        document = new HtmlDocument(domain, domain);
+        document = new HtmlDocument("http://" + domain, domain);
     }
 
     public static String getDomain() {
