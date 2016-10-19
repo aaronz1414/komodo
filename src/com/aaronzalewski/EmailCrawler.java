@@ -13,8 +13,6 @@ public class EmailCrawler {
         emailAddresses = new HashSet<>();
 
         breadthFirstSearchCrawl("http://" + args[0]);
-
-        emailAddresses.forEach(System.out::println);
     }
 
     private static void breadthFirstSearchCrawl(String startUrl) {
@@ -29,8 +27,12 @@ public class EmailCrawler {
                 crawledUrls.add(currentUrl);
                 HtmlDocument document = HtmlDocumentImpl.createHtmlDocument(currentUrl);
                 urlsToCrawl.addAll(document.getUrlsInDomain());
-                document.getEmailAddresses()
-                        .forEach(email -> emailAddresses.add(email));
+                document.getEmailAddresses().stream()
+                        .filter(email -> !emailAddresses.contains(email))
+                        .forEach(email -> {
+                            emailAddresses.add(email);
+                            System.out.println(email);
+                        });
             }
         }
     }

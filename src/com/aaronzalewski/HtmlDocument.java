@@ -1,11 +1,11 @@
 package com.aaronzalewski;
 
-import java.util.List;
+import java.util.Set;
 
 public interface HtmlDocument {
 
-    public List<String> getEmailAddresses();
+    public Set<String> getEmailAddresses();
 
-    public List<String> getUrlsInDomain();
+    public Set<String> getUrlsInDomain();
 
 }
